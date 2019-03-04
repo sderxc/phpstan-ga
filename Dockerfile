@@ -12,6 +12,7 @@ LABEL "maintainer"="Oskar Stark <oskarstark@googlemail.com>"
 COPY --from=composer:1.8.4 /usr/bin/composer /usr/local/bin/composer
 
 RUN COMPOSER_AUTH="{\"github-oauth\": {\"github.com\": \"$GITHUB_TOKEN\"}}" \
+    && echo $COMPOSER_AUTH \
     && composer global require phpstan/phpstan ^0.11 \
     && composer global require phpstan/phpstan-doctrine \
     && composer global require phpstan/phpstan-phpunit \
